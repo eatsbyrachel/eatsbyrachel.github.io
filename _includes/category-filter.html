@@ -1,0 +1,15 @@
+{% assign all_categories = "" | split: "" %}
+{% for recipe in site.recipes %}
+  {% for cat in recipe.categories %}
+    {% unless all_categories contains cat %}
+      {% assign all_categories = all_categories | push: cat %}
+    {% endunless %}
+  {% endfor %}
+{% endfor %}
+
+<div class="category-filter" role="navigation" aria-label="Filter recipes by category">
+  <button class="filter-btn active" data-category="all">All</button>
+  {% for cat in all_categories %}
+  <button class="filter-btn" data-category="{{ cat }}">{{ cat | capitalize }}</button>
+  {% endfor %}
+</div>

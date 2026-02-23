@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<div class="wrapper">
+  <section class="hero">
+    <h1 class="hero__title">EatsbyRachel</h1>
+    <p class="hero__subtitle">{{ site.description }}</p>
+    <a href="{{ '/recipes/' | relative_url }}" class="btn btn--primary">Browse Recipes</a>
+  </section>
+
+  {% assign latest_recipes = site.recipes | sort: 'date' | reverse %}
+  {% if latest_recipes.size > 0 %}
+  <section class="section">
+    <div class="section__header">
+      <h2 class="section__title">Latest Recipes</h2>
+      <a href="{{ '/recipes/' | relative_url }}" class="section__link">View All &rarr;</a>
+    </div>
+    <div class="recipe-grid">
+      {% for recipe in latest_recipes limit:6 %}
+        {% include recipe-card.html recipe=recipe %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {{ content }}
+</div>

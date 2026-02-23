@@ -1,0 +1,12 @@
+- platform: tiktok
+  url: "https://tiktok.com/@eatsbyrachel"
+  label: "TikTok"
+- platform: instagram
+  url: "https://instagram.com/eatsbyrachel"
+  label: "Instagram"
+- platform: youtube
+  url: "https://youtube.com/@eatsbyrachel"
+  label: "YouTube"
+- platform: email
+  url: "mailto:rachel@eatsbyrachel.com"
+  label: "Email Me"

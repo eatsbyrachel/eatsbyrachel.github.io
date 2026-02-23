@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<div class="links-page">
+  <div class="links-profile">
+    <img src="{{ '/assets/images/logo.jpg' | relative_url }}" alt="{{ site.title }}" class="links-avatar">
+    <h1 class="links-name">{{ site.title }}</h1>
+    <p class="links-bio">{{ site.description }}</p>
+  </div>
+
+  <div class="links-list">
+    {% for link in site.data.social %}
+    <a href="{{ link.url }}" class="link-btn" target="_blank" rel="noopener noreferrer">
+      {% include social-icons.html icon=link.platform %}
+      {{ link.label }}
+    </a>
+    {% endfor %}
+
+    <a href="{{ '/recipes/' | relative_url }}" class="link-btn link-btn--primary">
+      Browse All Recipes
+    </a>
+  </div>
+
+  {{ content }}
+</div>

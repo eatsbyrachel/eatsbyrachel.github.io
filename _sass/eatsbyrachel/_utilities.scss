@@ -1,0 +1,20 @@
+@use "variables" as *;
+
+.text-center { text-align: center; }
+.text-muted { color: $text-muted; }
+.mb-0 { margin-bottom: 0; }
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+.mt-lg { margin-top: $spacing-lg; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,254 @@
+@use "variables" as *;
+
+// Recipe detail page
+.recipe-hero {
+  width: 100%;
+  margin-bottom: $spacing-lg;
+}
+
+.recipe-hero__image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: $radius-lg;
+
+  @include respond-to($bp-md) {
+    max-height: 600px;
+  }
+}
+
+.recipe-header {
+  text-align: center;
+  margin-bottom: $spacing-lg;
+}
+
+.recipe-header__category {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $pink-dark;
+  margin-bottom: $spacing-xs;
+}
+
+.recipe-header__title {
+  font-size: 2rem;
+  margin-bottom: $spacing-sm;
+
+  @include respond-to($bp-md) {
+    font-size: 2.8rem;
+  }
+}
+
+.recipe-header__description {
+  font-size: 1.05rem;
+  color: $text-muted;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+// Meta bar (prep time, cook time, servings)
+.recipe-meta {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+  padding: $spacing-md 0;
+  margin-bottom: $spacing-lg;
+  border-top: 1px solid $gray;
+  border-bottom: 1px solid $gray;
+
+  @include respond-to($bp-md) {
+    gap: $spacing-lg;
+  }
+}
+
+.recipe-meta__item {
+  text-align: center;
+  min-width: 80px;
+}
+
+.recipe-meta__label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $text-muted;
+  margin-bottom: 2px;
+}
+
+.recipe-meta__value {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $pink-dark;
+}
+
+// Jump to recipe button
+.jump-to-recipe {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-lg;
+}
+
+// Recipe narrative content
+.recipe-narrative {
+  max-width: $content-narrow;
+  margin: 0 auto $spacing-xl;
+  font-size: 1.05rem;
+  line-height: 1.8;
+
+  p {
+    margin-bottom: $spacing-md;
+  }
+
+  img {
+    border-radius: $radius-md;
+    margin: $spacing-lg 0;
+  }
+}
+
+// Recipe card (structured ingredients + instructions)
+.recipe-box {
+  max-width: $content-narrow;
+  margin: 0 auto;
+  background: $off-white;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  border: 2px solid $pink-light;
+
+  @include respond-to($bp-md) {
+    padding: $spacing-xl;
+  }
+}
+
+.recipe-box__title {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: $spacing-md;
+  color: $pink-dark;
+}
+
+.recipe-box__section-title {
+  font-size: 1.3rem;
+  margin-top: $spacing-lg;
+  margin-bottom: $spacing-sm;
+  padding-bottom: $spacing-xs;
+  border-bottom: 2px solid $pink-light;
+}
+
+// Ingredients list
+.recipe-ingredients {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: $spacing-xs 0;
+    padding-left: $spacing-md;
+    position: relative;
+    border-bottom: 1px solid rgba($gray, 0.5);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: $pink-light;
+      border: 2px solid $pink-dark;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+// Instructions list
+.recipe-instructions {
+  list-style: none;
+  padding: 0;
+  counter-reset: step;
+
+  li {
+    counter-increment: step;
+    padding: $spacing-sm 0 $spacing-sm $spacing-xl;
+    position: relative;
+    border-bottom: 1px solid rgba($gray, 0.5);
+    line-height: 1.7;
+
+    &::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: $spacing-sm;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: $pink-dark;
+      color: $white;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+// Recipe notes
+.recipe-notes {
+  margin-top: $spacing-lg;
+  padding: $spacing-md;
+  background: rgba($pink-light, 0.3);
+  border-radius: $radius-md;
+  border-left: 4px solid $pink-dark;
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+}
+
+// More recipes section
+.more-recipes {
+  margin-top: $spacing-xxl;
+  padding-top: $spacing-xl;
+  border-top: 1px solid $gray;
+}
+
+.more-recipes__title {
+  text-align: center;
+  margin-bottom: $spacing-lg;
+}
+
+// Print styles
+@media print {
+  .site-header,
+  .site-footer,
+  .jump-to-recipe,
+  .more-recipes,
+  .recipe-narrative {
+    display: none;
+  }
+
+  .recipe-box {
+    border: 1px solid #ccc;
+    padding: 1rem;
+  }
+
+  .recipe-hero__image {
+    max-height: 300px;
+  }
+}

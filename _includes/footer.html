@@ -1,0 +1,12 @@
+<footer class="site-footer">
+  <div class="wrapper">
+    <div class="site-footer__social">
+      {% for link in site.data.social %}
+        <a href="{{ link.url }}" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="{{ link.label }}">
+          {% include social-icons.html icon=link.platform %}
+        </a>
+      {% endfor %}
+    </div>
+    <p class="site-footer__copy">&copy; {{ 'now' | date: '%Y' }} {{ site.title }}. Made with love.</p>
+  </div>
+</footer>

@@ -1,0 +1,64 @@
+@use "variables" as *;
+
+// Hero section
+.hero {
+  text-align: center;
+  padding: $spacing-xl $spacing-sm;
+  background: linear-gradient(135deg, $off-white 0%, rgba($pink-light, 0.4) 100%);
+  border-radius: $radius-lg;
+  margin-bottom: $spacing-xl;
+
+  @include respond-to($bp-md) {
+    padding: $spacing-xxl $spacing-lg;
+  }
+}
+
+.hero__title {
+  font-size: 2.2rem;
+  margin-bottom: $spacing-sm;
+
+  @include respond-to($bp-md) {
+    font-size: 3rem;
+  }
+}
+
+.hero__subtitle {
+  font-size: 1.05rem;
+  color: $text-muted;
+  max-width: 500px;
+  margin: 0 auto $spacing-lg;
+  line-height: 1.6;
+}
+
+// Section
+.section {
+  margin-bottom: $spacing-xxl;
+}
+
+.section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-lg;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+.section__title {
+  font-size: 1.6rem;
+  margin-bottom: 0;
+
+  @include respond-to($bp-md) {
+    font-size: 2rem;
+  }
+}
+
+.section__link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $pink-dark;
+
+  &:hover {
+    color: $pink-hover;
+  }
+}

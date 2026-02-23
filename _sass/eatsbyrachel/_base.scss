@@ -1,0 +1,70 @@
+@use "variables" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $base-font-size;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: $font-body;
+  font-size: 1rem;
+  line-height: $base-line-height;
+  color: $text-dark;
+  background-color: $white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: $spacing-sm;
+  color: $text-dark;
+}
+
+h1 { font-size: 2rem; @include respond-to($bp-md) { font-size: 2.5rem; } }
+h2 { font-size: 1.6rem; @include respond-to($bp-md) { font-size: 2rem; } }
+h3 { font-size: 1.3rem; @include respond-to($bp-md) { font-size: 1.5rem; } }
+h4 { font-size: 1.1rem; }
+
+p {
+  margin-top: 0;
+  margin-bottom: $spacing-sm;
+}
+
+a {
+  color: $pink-dark;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $pink-hover;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  padding-left: 1.5rem;
+  margin-top: 0;
+  margin-bottom: $spacing-sm;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid $gray;
+  margin: $spacing-lg 0;
+}

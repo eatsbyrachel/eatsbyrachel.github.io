@@ -1,0 +1,24 @@
+<div class="recipe-card" data-categories="{{ include.recipe.categories | join: ' ' }}">
+  <a href="{{ include.recipe.url | relative_url }}" class="recipe-card__link">
+    <img
+      src="{{ include.recipe.image | default: '/assets/images/recipe-placeholder.jpg' | relative_url }}"
+      alt="{{ include.recipe.image_alt | default: include.recipe.title }}"
+      class="recipe-card__image"
+      loading="lazy"
+    >
+    <div class="recipe-card__body">
+      {% if include.recipe.categories %}
+        <span class="recipe-card__category">{{ include.recipe.categories | first | capitalize }}</span>
+      {% endif %}
+      <h3 class="recipe-card__title">{{ include.recipe.title }}</h3>
+      <div class="recipe-card__meta">
+        {% if include.recipe.total_time %}
+          <span>{{ include.recipe.total_time }} min</span>
+        {% endif %}
+        {% if include.recipe.difficulty %}
+          <span>{{ include.recipe.difficulty | capitalize }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </a>
+</div>

@@ -1,0 +1,35 @@
+---
+layout: page
+title: Contact Me
+subtitle: Have a recipe question, collaboration idea, or just want to say hi?
+permalink: /contact-me/
+description: "Get in touch with Rachel for recipe questions, collaborations, or just to say hi!"
+---
+
+<div class="contact-form">
+  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="_replyto" required>
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject</label>
+      <select id="subject" name="subject">
+        <option value="general">General Question</option>
+        <option value="collab">Collaboration</option>
+        <option value="recipe">Recipe Question</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+    </div>
+    <input type="text" name="_gotcha" style="display:none">
+    <button type="submit" class="btn btn--primary">Send Message</button>
+  </form>
+</div>

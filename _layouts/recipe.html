@@ -1,0 +1,77 @@
+---
+layout: default
+---
+{% include recipe-schema.html %}
+
+<article class="wrapper wrapper--medium">
+  {% if page.image %}
+  <div class="recipe-hero">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" class="recipe-hero__image">
+  </div>
+  {% endif %}
+
+  <div class="recipe-header">
+    {% if page.categories %}
+      <span class="recipe-header__category">{{ page.categories | first | capitalize }}</span>
+    {% endif %}
+    <h1 class="recipe-header__title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="recipe-header__description">{{ page.description }}</p>
+    {% endif %}
+  </div>
+
+  {% include recipe-meta.html %}
+
+  <div class="text-center mb-lg">
+    <a href="#recipe-box" class="btn btn--outline jump-to-recipe">Jump to Recipe</a>
+  </div>
+
+  {% if content != "" %}
+  <div class="recipe-narrative">
+    {{ content }}
+  </div>
+  {% endif %}
+
+  <div class="recipe-box" id="recipe-box">
+    <h2 class="recipe-box__title">{{ page.title }}</h2>
+
+    {% include recipe-meta.html %}
+
+    {% if page.ingredients %}
+    <h3 class="recipe-box__section-title">Ingredients</h3>
+    <ul class="recipe-ingredients">
+      {% for ingredient in page.ingredients %}
+        <li>{{ ingredient }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if page.instructions %}
+    <h3 class="recipe-box__section-title">Instructions</h3>
+    <ol class="recipe-instructions">
+      {% for step in page.instructions %}
+        <li>{{ step }}</li>
+      {% endfor %}
+    </ol>
+    {% endif %}
+
+    {% if page.notes %}
+    <div class="recipe-notes">
+      <strong>Notes:</strong>
+      <p>{{ page.notes }}</p>
+    </div>
+    {% endif %}
+  </div>
+
+  {% assign other_recipes = site.recipes | where_exp: "r", "r.url != page.url" | sample: 3 %}
+  {% if other_recipes.size > 0 %}
+  <div class="more-recipes">
+    <h2 class="more-recipes__title">More Recipes You'll Love</h2>
+    <div class="recipe-grid">
+      {% for recipe in other_recipes %}
+        {% include recipe-card.html recipe=recipe %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</article>

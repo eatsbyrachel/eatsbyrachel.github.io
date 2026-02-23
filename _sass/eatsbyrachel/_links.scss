@@ -1,0 +1,89 @@
+@use "variables" as *;
+
+// Linktree-style page
+.links-page {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl $spacing-sm;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.links-profile {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+}
+
+.links-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto $spacing-md;
+  border: 3px solid $pink-light;
+}
+
+.links-name {
+  font-family: $font-heading;
+  font-size: 1.6rem;
+  margin-bottom: $spacing-xs;
+}
+
+.links-bio {
+  font-size: 0.95rem;
+  color: $text-muted;
+  line-height: 1.5;
+}
+
+.links-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  width: 100%;
+  padding: 0.9rem $spacing-md;
+  font-family: $font-body;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: $text-dark;
+  background: $white;
+  border: 2px solid $gray;
+  border-radius: $radius-pill;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $pink-dark;
+    color: $pink-dark;
+    transform: translateY(-2px);
+    box-shadow: $shadow-sm;
+  }
+
+  svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+}
+
+.link-btn--primary {
+  background: $pink-dark;
+  color: $white;
+  border-color: $pink-dark;
+
+  &:hover {
+    background: $pink-hover;
+    border-color: $pink-hover;
+    color: $white;
+  }
+}

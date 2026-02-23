@@ -1,0 +1,32 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": {{ page.title | jsonify }},
+  "author": {
+    "@type": "Person",
+    "name": {{ page.author | default: site.author.name | jsonify }}
+  },
+  "image": "{{ page.image | absolute_url }}",
+  "description": {{ page.description | jsonify }},
+  "prepTime": "PT{{ page.prep_time }}M",
+  "cookTime": "PT{{ page.cook_time }}M",
+  "totalTime": "PT{{ page.total_time }}M",
+  "recipeYield": "{{ page.servings }} servings",
+  "recipeCategory": {{ page.categories | first | jsonify }},
+  "recipeIngredient": {{ page.ingredients | jsonify }},
+  "recipeInstructions": [
+    {% for step in page.instructions %}
+    {
+      "@type": "HowToStep",
+      "position": {{ forloop.index }},
+      "text": {{ step | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]{% if page.calories %},
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "calories": "{{ page.calories }} calories"
+  }{% endif %}
+}
+</script>

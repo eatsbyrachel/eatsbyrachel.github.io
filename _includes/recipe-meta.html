@@ -1,0 +1,32 @@
+<div class="recipe-meta">
+  {% if page.prep_time %}
+  <div class="recipe-meta__item">
+    <span class="recipe-meta__label">Prep</span>
+    <span class="recipe-meta__value">{{ page.prep_time }} min</span>
+  </div>
+  {% endif %}
+  {% if page.cook_time %}
+  <div class="recipe-meta__item">
+    <span class="recipe-meta__label">Cook</span>
+    <span class="recipe-meta__value">{{ page.cook_time }} min</span>
+  </div>
+  {% endif %}
+  {% if page.total_time %}
+  <div class="recipe-meta__item">
+    <span class="recipe-meta__label">Total</span>
+    <span class="recipe-meta__value">{{ page.total_time }} min</span>
+  </div>
+  {% endif %}
+  {% if page.servings %}
+  <div class="recipe-meta__item">
+    <span class="recipe-meta__label">Servings</span>
+    <span class="recipe-meta__value">{{ page.servings }}</span>
+  </div>
+  {% endif %}
+  {% if page.difficulty %}
+  <div class="recipe-meta__item">
+    <span class="recipe-meta__label">Difficulty</span>
+    <span class="recipe-meta__value">{{ page.difficulty | capitalize }}</span>
+  </div>
+  {% endif %}
+</div>
