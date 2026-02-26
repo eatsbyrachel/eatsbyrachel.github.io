@@ -1,0 +1,21 @@
+<div class="recipe-card" data-categories="{{ include.review.categories | join: ' ' }}">
+  <a href="{{ include.review.url | relative_url }}" class="recipe-card__link">
+    <img
+      src="{{ include.review.image | default: '/assets/images/recipe-placeholder.jpg' | relative_url }}"
+      alt="{{ include.review.image_alt | default: include.review.title }}"
+      class="recipe-card__image"
+      loading="lazy"
+    >
+    <div class="recipe-card__body">
+      {% if include.review.categories %}
+        <span class="recipe-card__category">{{ include.review.categories | first | capitalize }}</span>
+      {% endif %}
+      <h3 class="recipe-card__title">{{ include.review.title }}</h3>
+      <div class="recipe-card__meta">
+        {% if include.review.rating %}
+          <span>{{ include.review.rating }}/5</span>
+        {% endif %}
+      </div>
+    </div>
+  </a>
+</div>

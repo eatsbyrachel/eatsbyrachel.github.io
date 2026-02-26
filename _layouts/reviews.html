@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<div class="wrapper">
+  <div class="page-header">
+    <h1 class="page-header__title">{{ page.title }}</h1>
+    {% if page.subtitle %}
+      <p class="page-header__subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+  </div>
+
+  {% include review-category-filter.html %}
+
+  {% assign all_reviews = site.reviews | sort: 'date' | reverse %}
+  <div class="recipe-grid">
+    {% for review in all_reviews %}
+      {% include review-card.html review=review %}
+    {% endfor %}
+  </div>
+
+  {{ content }}
+</div>
+
+<script src="{{ '/assets/js/category-filter.js' | relative_url }}"></script>

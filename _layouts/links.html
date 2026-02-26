@@ -3,22 +3,23 @@ layout: default
 ---
 <div class="links-page">
   <div class="links-profile">
-    <img src="{{ '/assets/images/logo.jpg' | relative_url }}" alt="{{ site.title }}" class="links-avatar">
+    <img src="{{ '/assets/images/profile_eatsbyrachel.png' | relative_url }}" alt="{{ site.title }}" class="links-avatar">
     <h1 class="links-name">{{ site.title }}</h1>
     <p class="links-bio">{{ site.description }}</p>
   </div>
 
   <div class="links-list">
+    <a href="https://www.amazon.com/shop/eatsbyrachel" class="link-btn" target="_blank" rel="noopener noreferrer">
+      <img src="{{ '/assets/icons/amazon-icon.svg' | relative_url }}" alt="Amazon" class="link-icon">
+      Amazon Storefront
+    </a>
+
     {% for link in site.data.social %}
     <a href="{{ link.url }}" class="link-btn" target="_blank" rel="noopener noreferrer">
       {% include social-icons.html icon=link.platform %}
       {{ link.label }}
     </a>
     {% endfor %}
-
-    <a href="{{ '/recipes/' | relative_url }}" class="link-btn link-btn--primary">
-      Browse All Recipes
-    </a>
   </div>
 
   {{ content }}

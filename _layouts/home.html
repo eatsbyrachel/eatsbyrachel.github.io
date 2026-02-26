@@ -9,15 +9,22 @@ layout: default
   </section>
 
   {% assign latest_recipes = site.recipes | sort: 'date' | reverse %}
-  {% if latest_recipes.size > 0 %}
+  {% assign latest_reviews = site.reviews | sort: 'date' | reverse %}
+  {% assign has_content = false %}
+  {% if latest_recipes.size > 0 %}{% assign has_content = true %}{% endif %}
+  {% if latest_reviews.size > 0 %}{% assign has_content = true %}{% endif %}
+
+  {% if has_content %}
   <section class="section">
     <div class="section__header">
-      <h2 class="section__title">Latest Recipes</h2>
-      <a href="{{ '/recipes/' | relative_url }}" class="section__link">View All &rarr;</a>
+      <h2 class="section__title">Latest Recipes and Reviews</h2>
     </div>
     <div class="recipe-grid">
-      {% for recipe in latest_recipes limit:6 %}
+      {% for recipe in latest_recipes limit:3 %}
         {% include recipe-card.html recipe=recipe %}
+      {% endfor %}
+      {% for review in latest_reviews limit:3 %}
+        {% include review-card.html review=review %}
       {% endfor %}
     </div>
   </section>

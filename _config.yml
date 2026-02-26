@@ -1,9 +1,8 @@
 # Site settings
-title: EatsbyRachel
+title: 'EatsbyRachel'
 email: rachel@eatsbyrachel.com
 description: >-
-  Delicious, easy-to-follow recipes by Rachel. From quick weeknight dinners
-  to indulgent desserts, find your next favorite meal.
+  You'll find me where the food's at. 
 baseurl: ""
 url: "https://eatsbyrachel.github.io"
 author:
@@ -27,6 +26,9 @@ collections:
   recipes:
     output: true
     permalink: /recipes/:slug/
+  reviews:
+    output: true
+    permalink: /reviews/:slug/
 
 # Default front matter
 defaults:
@@ -35,6 +37,12 @@ defaults:
       type: "recipes"
     values:
       layout: "recipe"
+      author: "Rachel"
+  - scope:
+      path: ""
+      type: "reviews"
+    values:
+      layout: "review"
       author: "Rachel"
 
 # SEO

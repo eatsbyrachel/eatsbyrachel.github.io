@@ -1,0 +1,81 @@
+---
+layout: default
+---
+<article class="wrapper wrapper--medium">
+  {% if page.image %}
+  <div class="recipe-hero">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" class="recipe-hero__image">
+  </div>
+  {% endif %}
+
+  <div class="recipe-header">
+    {% if page.categories %}
+      <span class="recipe-header__category">{{ page.categories | first | capitalize }}</span>
+    {% endif %}
+    <h1 class="recipe-header__title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="recipe-header__description">{{ page.description }}</p>
+    {% endif %}
+  </div>
+
+  <div class="recipe-meta">
+    {% if page.rating %}
+    <div class="recipe-meta__item">
+      <span class="recipe-meta__label">Rating</span>
+      <span class="recipe-meta__value">{{ page.rating }}/5</span>
+    </div>
+    {% endif %}
+    {% if page.price %}
+    <div class="recipe-meta__item">
+      <span class="recipe-meta__label">Price</span>
+      <span class="recipe-meta__value">{{ page.price }}</span>
+    </div>
+    {% endif %}
+    {% if page.purchase_location %}
+    <div class="recipe-meta__item">
+      <span class="recipe-meta__label">Where to Buy</span>
+      <span class="recipe-meta__value">{{ page.purchase_location }}</span>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if page.pros or page.cons %}
+  <div class="recipe-box">
+    {% if page.pros %}
+    <h3 class="recipe-box__section-title">Pros</h3>
+    <ul class="recipe-ingredients">
+      {% for pro in page.pros %}
+        <li>{{ pro }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if page.cons %}
+    <h3 class="recipe-box__section-title">Cons</h3>
+    <ul class="recipe-ingredients">
+      {% for con in page.cons %}
+        <li>{{ con }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if content != "" %}
+  <div class="recipe-narrative">
+    {{ content }}
+  </div>
+  {% endif %}
+
+  {% assign other_reviews = site.reviews | where_exp: "r", "r.url != page.url" | sample: 3 %}
+  {% if other_reviews.size > 0 %}
+  <div class="more-recipes">
+    <h2 class="more-recipes__title">More Reviews You'll Love</h2>
+    <div class="recipe-grid">
+      {% for review in other_reviews %}
+        {% include review-card.html review=review %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</article>

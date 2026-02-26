@@ -1,0 +1,15 @@
+{% assign all_categories = "" | split: "" %}
+{% for review in site.reviews %}
+  {% for cat in review.categories %}
+    {% unless all_categories contains cat %}
+      {% assign all_categories = all_categories | push: cat %}
+    {% endunless %}
+  {% endfor %}
+{% endfor %}
+
+<div class="category-filter" role="navigation" aria-label="Filter reviews by category">
+  <button class="filter-btn active" data-category="all">All</button>
+  {% for cat in all_categories %}
+  <button class="filter-btn" data-category="{{ cat }}">{{ cat | capitalize }}</button>
+  {% endfor %}
+</div>

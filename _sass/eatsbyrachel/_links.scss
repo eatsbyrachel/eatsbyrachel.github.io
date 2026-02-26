@@ -69,7 +69,8 @@
     box-shadow: $shadow-sm;
   }
 
-  svg {
+  svg,
+  .link-icon {
     width: 22px;
     height: 22px;
     flex-shrink: 0;
